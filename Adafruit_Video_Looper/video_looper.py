@@ -430,7 +430,7 @@ class VideoLooper:
                     # todo: maybe clear screen to black so that background (image/color) is not visible for videos with a resolution that is < screen resolution
                     self._player.play(movie, loop=None, vol=self._sound_vol)
 
-                    close_curtain
+                    close_curtain()
 
             # Check for changes in the file search path (like USB drives added)
             # and rebuild the playlist.
