@@ -391,14 +391,13 @@ class VideoLooper:
         self._set_hardware_volume()
         movie = playlist.get_next(self._is_random, self._resume_playlist)
         # Main loop to play videos in the playlist and listen for file changes.
-        print("start wile loop")
         while self._running:
             # Load and play a new movie if nothing is playing.
             if not self._player.is_playing() and not self._playbackStopped:
                 if movie is not None:  # just to avoid errors
                     close_curtain()
                     print("new loop")
-                    time.sleep(15)
+                    time.sleep(5)
                     if movie.playcount >= movie.repeats:
                         movie.clear_playcount()
                         movie = playlist.get_next(self._is_random, self._resume_playlist)
@@ -472,7 +471,6 @@ class VideoLooper:
 # Main entry point.
 if __name__ == '__main__':
     print('Starting Adafruit Video Looper.')
-    print("my Comment")
     # Default config path to /boot.
     config_path = '/boot/video_looper.ini'
     # Override config path if provided as parameter.
@@ -484,5 +482,4 @@ if __name__ == '__main__':
     signal.signal(signal.SIGTERM, videolooper.signal_quit)
     signal.signal(signal.SIGINT, videolooper.signal_quit)
     # Run the main loop.
-    print("run main loop")
     videolooper.run()

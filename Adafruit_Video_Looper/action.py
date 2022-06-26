@@ -10,13 +10,13 @@ GPIO.setup(motor, GPIO.OUT)
 def open_curtain():
     # open curtain
     GPIO.output(motor, GPIO.HIGH)
-    print("opening")
+    print("opening curtain")
     time.sleep(close_time)
     GPIO.output(motor, GPIO.LOW)
 
 def close_curtain():
     # close curtain
     GPIO.output(motor, GPIO.HIGH)
-    print("closing")
+    print("closing curtain")
     time.sleep(close_time)
     GPIO.output(motor, GPIO.LOW)
