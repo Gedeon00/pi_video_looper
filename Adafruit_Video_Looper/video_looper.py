@@ -383,7 +383,6 @@ class VideoLooper:
     def run(self):
         """Main program loop.  Will never return!"""
         curtain_open = False
-        cycles = 0
         # Get playlist of movies to play from file reader.
         playlist = self._build_playlist()
         self._prepare_to_run_playlist(playlist)
@@ -418,7 +417,7 @@ class VideoLooper:
                         infotext = '(endless loop)'
 
                     # do something before playing movie
-                    curtain_motor(curtain_open)
+                    curtain_open = curtain_motor(curtain_open)
 
                     # Start playing the first available movie.
                     self._print('Playing movie: {0} {1}'.format(movie, infotext))
@@ -446,6 +445,7 @@ class VideoLooper:
             # since keyboard commands are handled in a seperate thread this sleeptime mostly influences the pause between files
                         
             time.sleep(0.002)
+            curtain_open = curtain_motor(curtain_open)
 
     def quit(self, shutdown=False):
         """Shut down the program"""
