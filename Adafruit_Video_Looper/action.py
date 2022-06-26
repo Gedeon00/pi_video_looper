@@ -3,27 +3,20 @@ import time
 
 motor = 8
 close_time = 3
-jaslfjjkkj
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(motor, GPIO.OUT)
 
-def curtain_motor(curtain_open: bool):
+def open_curtain():
+    # open curtain
+    GPIO.output(motor, GPIO.HIGH)
+    print("opening")
+    time.sleep(close_time)
+    GPIO.output(motor, GPIO.LOW)
 
-    if curtain_open == False:
-        # open curtain
-        GPIO.output(motor, GPIO.HIGH)
-        print("on")
-        time.sleep(close_time)
-        GPIO.output(motor, GPIO.LOW)
-        curtain_open = True
-        return curtain_open
-
-    else:
-        # close curtain
-        GPIO.output(motor, GPIO.HIGH)
-        print("on")
-        time.sleep(close_time)
-        GPIO.output(motor, GPIO.LOW)
-        curtain_open = False
-        return curtain_open
+def open_curtain():
+    # open curtain
+    GPIO.output(motor, GPIO.HIGH)
+    print("closing")
+    time.sleep(close_time)
+    GPIO.output(motor, GPIO.LOW)

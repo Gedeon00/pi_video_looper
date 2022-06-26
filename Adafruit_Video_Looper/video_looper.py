@@ -17,7 +17,7 @@ from datetime import datetime
 from .alsa_config import parse_hw_device
 from .model import Playlist, Movie
 from .playlist_builders import build_playlist_m3u
-from .action import curtain_motor
+from .action import *
 
 
 # Basic video looper architecure:
@@ -423,12 +423,14 @@ class VideoLooper:
 
                     # do something before playing movie
                     print("run my function")
-                    curtain_open = curtain_motor(curtain_open)
+                    open_curtain()
 
                     # Start playing the first available movie.
                     self._print('Playing movie: {0} {1}'.format(movie, infotext))
                     # todo: maybe clear screen to black so that background (image/color) is not visible for videos with a resolution that is < screen resolution
                     self._player.play(movie, loop=None, vol=self._sound_vol)
+
+                    close_curtain
 
             # Check for changes in the file search path (like USB drives added)
             # and rebuild the playlist.
@@ -451,7 +453,6 @@ class VideoLooper:
             # since keyboard commands are handled in a seperate thread this sleeptime mostly influences the pause between files
 
             time.sleep(0.002)
-            curtain_open = curtain_motor(curtain_open)
 
     def quit(self, shutdown=False):
         """Shut down the program"""
