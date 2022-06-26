@@ -14,8 +14,8 @@ def open_curtain():
     time.sleep(close_time)
     GPIO.output(motor, GPIO.LOW)
 
-def open_curtain():
-    # open curtain
+def close_curtain():
+    # close curtain
     GPIO.output(motor, GPIO.HIGH)
     print("closing")
     time.sleep(close_time)
