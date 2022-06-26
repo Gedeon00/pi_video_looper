@@ -396,7 +396,7 @@ class VideoLooper:
             # Load and play a new movie if nothing is playing.
             if not self._player.is_playing() and not self._playbackStopped:
                 if movie is not None:  # just to avoid errors
-
+                    close_curtain()
                     if movie.playcount >= movie.repeats:
                         movie.clear_playcount()
                         movie = playlist.get_next(self._is_random, self._resume_playlist)
@@ -425,12 +425,10 @@ class VideoLooper:
                     print("run my function")
                     open_curtain()
 
-                    # Start playing the first available movie.
+                    # Start playing the first available movie. (In separate thread!)
                     self._print('Playing movie: {0} {1}'.format(movie, infotext))
                     # todo: maybe clear screen to black so that background (image/color) is not visible for videos with a resolution that is < screen resolution
                     self._player.play(movie, loop=None, vol=self._sound_vol)
-
-                    close_curtain()
 
             # Check for changes in the file search path (like USB drives added)
             # and rebuild the playlist.
