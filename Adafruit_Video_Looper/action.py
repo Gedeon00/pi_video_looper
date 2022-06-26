@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 
-motor = 15
-cycles = 0
+motor = 14
+
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(motor, GPIO.OUT)
@@ -13,7 +13,6 @@ def curtain_motor(curtain_open: bool):
         GPIO.output(motor, GPIO.HIGH)
         time.sleep(3)
         GPIO.output(motor, GPIO.LOW)
-
         curtain_open == True
         cycles = 0
 

@@ -383,6 +383,7 @@ class VideoLooper:
     def run(self):
         """Main program loop.  Will never return!"""
         curtain_open = False
+        cycles = 0
         # Get playlist of movies to play from file reader.
         playlist = self._build_playlist()
         self._prepare_to_run_playlist(playlist)
