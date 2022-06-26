@@ -7,7 +7,8 @@ motor_close = 10
 close_time = 3
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(motor, GPIO.OUT)
+GPIO.setup(motor_open, GPIO.OUT)
+GPIO.setup(motor_close, GPIO.OUT)
 
 def open_curtain():
     # open curtain
