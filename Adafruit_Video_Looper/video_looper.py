@@ -17,6 +17,7 @@ from datetime import datetime
 from .alsa_config import parse_hw_device
 from .model import Playlist, Movie
 from .playlist_builders import build_playlist_m3u
+from .action import curtain_motor
 
 
 # Basic video looper architecure:
@@ -381,6 +382,7 @@ class VideoLooper:
 
     def run(self):
         """Main program loop.  Will never return!"""
+        curtain_open = False
         # Get playlist of movies to play from file reader.
         playlist = self._build_playlist()
         self._prepare_to_run_playlist(playlist)
@@ -413,6 +415,9 @@ class VideoLooper:
                         infotext = '{0}/{1}'.format(movie.playcount, movie.repeats)
                     if playlist.length()==1:
                         infotext = '(endless loop)'
+
+                    # do something before playing movie
+                    curtain_open = curtain_motor(curtain_open)
 
                     # Start playing the first available movie.
                     self._print('Playing movie: {0} {1}'.format(movie, infotext))
