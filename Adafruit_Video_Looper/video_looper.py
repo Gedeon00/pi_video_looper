@@ -397,6 +397,8 @@ class VideoLooper:
             if not self._player.is_playing() and not self._playbackStopped:
                 if movie is not None:  # just to avoid errors
                     close_curtain()
+                    print("new loop")
+                    time.sleep(15)
                     if movie.playcount >= movie.repeats:
                         movie.clear_playcount()
                         movie = playlist.get_next(self._is_random, self._resume_playlist)
@@ -404,7 +406,6 @@ class VideoLooper:
                         movie.clear_playcount()
                         movie = playlist.get_next(self._is_random, self._resume_playlist)
 
-                    print("movie was played comment")
                     movie.was_played()
 
                     if self._wait_time > 0 and not self._firstStart:
@@ -422,7 +423,6 @@ class VideoLooper:
                         infotext = '(endless loop)'
 
                     # do something before playing movie
-                    print("run my function")
                     open_curtain()
 
                     # Start playing the first available movie. (In separate thread!)
