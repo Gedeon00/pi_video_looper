@@ -418,7 +418,7 @@ class VideoLooper:
                         infotext = '(endless loop)'
 
                     # do something before playing movie
-                    curtain_open = curtain_motor(curtain_open)
+                    curtain_motor(curtain_open)
 
                     # Start playing the first available movie.
                     self._print('Playing movie: {0} {1}'.format(movie, infotext))
