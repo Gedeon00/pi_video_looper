@@ -3,7 +3,7 @@ import time
 
 motor = 8
 close_time = 3
-jaslfjjkkj
+
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(motor, GPIO.OUT)
